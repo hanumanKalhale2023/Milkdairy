@@ -1,5 +1,5 @@
 const Admin = require('../models/Admin'); // Import the Admin model
-const User = require('../models/user');   // User model (to fetch users)
+const User = require('../models/User');   // User model (to fetch users)
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 

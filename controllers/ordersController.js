@@ -1,5 +1,5 @@
 const Order = require('../models/orders'); // Import the Order model
-const User = require('../models/user');   // Import the User model (for validation)
+const User = require('../models/User');   // Import the User model (for validation)
 const Attendance= require('../models/Attendance');// Import the Attendance model (for validation)
 
 // Create an Order
