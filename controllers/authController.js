@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const jwt = require('../config/jwt');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 //user registration
