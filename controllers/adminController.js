@@ -100,7 +100,7 @@ const createUser = async (req, res) => {
 // Update user details (Admin-only functionality)
 const updateUser = async (req, res) => {
   const { userId } = req.params;
-  const { userName, email, password } = req.body;
+  const { userName, email, password } = req.body; // Ensure the field name matches
 
   try {
     // Find the user by ID
@@ -109,10 +109,13 @@ const updateUser = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Update user details
-    if (userName) user.userName = userName;
-    if (email) user.email = email;
-    if (password) {
+    // Log the request body to ensure it contains the expected fields
+    console.log('Request Body:', req.body);
+
+    // Update user details only if provided in the request body
+    if (userName !== undefined) user.userName = userName; // Ensure userName is provided
+    if (email !== undefined) user.email = email;
+    if (password !== undefined) {
       // Hash the new password before saving
       user.password = await bcrypt.hash(password, 10);
     }
@@ -122,10 +125,11 @@ const updateUser = async (req, res) => {
 
     res.status(200).json({ message: 'User updated successfully!', user });
   } catch (error) {
+    // Log the error for debugging
+    console.error('Error updating user:', error);
     res.status(500).json({ message: 'Error updating user', error });
   }
 };
-
 // Delete a user (Admin-only functionality)
 const deleteUser = async (req, res) => {
   const { userId } = req.params;
